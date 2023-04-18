@@ -1,27 +1,45 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Home from "./components";
-import Resume from "./components/Resume";
-import Navbar from "./components/Navbar";
-import Portfolio from "./components/Portfolio";
-import Contact from "./components/Contact";
+import React, { Component } from 'react';
+import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Sidebar from './components/sidebar/Sidebar';
+import About from './components/about/About';
+import Experience from './components/Experience/Experience';
+import Interest from './components/skills/Interest';
+import Projects from './components/Projects/Projects.js';
+import CarouselImages from './components/Carousel/Carousel';
 
-import "./App.css";
-
-function App() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/resume" component={Resume} />
-        <Route exact path="/portfolio" component={Portfolio} />
-        <Route exact path="/contact" component={Contact} />
-      </Switch>
-    </React.Fragment>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className='App'>
+          <div className='side'>
+            <nav className='navbar side navbar-expand-lg navbar-light p-0'>
+              <button
+                className='navbar-toggler'
+                type='button'
+                data-toggle='collapse'
+                data-target='#navbarSupportedContent'
+                style={{ zIndex: '1' }}
+              >
+                <span className='navbar-toggler-icon'></span>
+              </button>
+              <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+                <Sidebar />
+              </div>
+            </nav>
+          </div>
+          <div className='main'>
+            <CarouselImages />
+            <Projects />
+            <About />
+            <Interest />
+            <Experience />
+          </div>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
